@@ -1,5 +1,113 @@
+@font-face {
+    font-display: swap;
+    font-family: "CL EagleIII 8x16";
+    src: url(https://dimden.dev/fonts/pixelfonts/Web437_CL_EagleIII_8x16.woff) format(woff)
+}
+
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline
+}
+
+.nav-button a {
+    position: relative;
+}
+
+.nav-link {
+    box-sizing: border-box;
+}
+
+@media screen and (max-height: 800px) {
+    .next-nav {
+        overflow-x: auto !important;
+    }
+}
+
 body {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: ms pgothic, "CL EagleIII 8x16", tahoma, sans-serif;
     /* width: 100vw;
     height: 100vh; */
     margin: 0;
@@ -7,39 +115,18 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: black;
     color: white;
     max-width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    background: url(/images/bg/pattern_580.gif) fixed #000;
+    overflow-x: hidden;
 }
 
 .title {
     display: block;
     z-index: -1;
     justify-content: center;
-}
-
-.content {
-    position: absolute;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
-a,
-h1,
-h3 {
-    transform: scaleY(2);
-    transform-origin: center;
-    margin: 5px 0;
-    line-height: 1.5;
-    white-space: normal;
-    word-break: break-word;
-    overflow: hidden;
 }
 
 h1 {
@@ -75,17 +162,6 @@ p {
     z-index: -1;
 }
 
-a {
-    color: gray;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-a:hover {
-    color: white;
-    cursor: pointer;
-}
-
 .info-box {
     z-index: 3;
     position: fixed;
@@ -95,25 +171,61 @@ a:hover {
     padding: 2rem;
 }
 
+.the-actual-content .nav {
+    position: relative
+}
+
+/* things I want to be aligned center */
+.nav,
+.main-pg-textbox {
+    text-align: center;
+}
+
 .nav {
-    position: absolute;
-    right: 0%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 41;
+    background: #000;
+    background-blend-mode: overlay;
+    grid-area: nav;
+    width: 200px;
+    color: #fff;
+    font-size: 12px;
 }
 
-.nav a {
+.nav-link {
+    text-shadow: 0 1px #000, 1px 0 #000, 0 -1px #000, -1px 0 #000, 1px -1px #000, -1px 1px #000, 1px 1px #000, -1px -1px #000;
     display: inline-block;
-    margin: 10px;
-    font-size: 1.2rem;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
+    animation: 3s linear infinite reverse rotate;
+    border: 3px solid transparent;
+    outline: black groove 5px;
+    width: fit-content;
+    margin: 15px 0 0;
     transition: background-color 0.3s ease;
-    word-break: break-word;
+    font-size: 20px;
+    overflow: hidden;
 }
 
-.nav a:hover {
-    color: black;
-    background-color: white;
+.nav hr {
+    border-top: 1px dotted;
+    border-bottom: 0
+}
+
+.nav-button a {
+    color: #D52F63;
+    background: linear-gradient(.25turn, #FFFFFFFF, #FCEFEFFF, #B0DCFFFF) #000453;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    border: 3px groove white;
+    display: inline-block;
+    width: 150px;
+    padding: 5px;
+    margin: 0;
+    border: none;
+}
+
+.nav-button a:hover {
+    filter: contrast(2);
 }
 
 #portfolio-list {
@@ -175,4 +287,106 @@ a:hover {
     50% {
         color: white;
     }
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg
+    }
+}
+
+.content,
+.extras,
+.my-links,
+.page,
+.something {
+    display: grid
+}
+
+.next-nav,
+.page {
+    height: 100vh;
+}
+
+.content {
+    z-index: 40;
+    background: #000;
+    padding: 0 20px 20px;
+    grid-template-columns: 650px 250px;
+    grid-template-rows: 466px 43px 759px;
+    grid-template-areas:
+        "main sidebar"
+        "below-desc sidebar"
+        "extras extras";
+    height: fit-content;
+    width: 940px;
+}
+
+.page {
+    margin: 0 auto;
+    width: fit-content;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+        "nav next-nav"
+        "nav footer";
+    outline: #003 groove 4px;
+}
+
+.next-nav {
+    z-index: 40;
+    grid-area: next-nav;
+    background: #000;
+    border-image: url(/images/bg/pattern_580.gif) 0 20 repeat;
+    border-image-repeat: repeat;
+    border-left: 20px solid;
+    border-right: 20px solid;
+    overflow: auto;
+}
+
+
+.before-content {
+    z-index: 40;
+    grid-template-rows: auto auto auto;
+    display: grid;
+    grid-template-areas:
+        "header"
+        "header-title"
+        "content";
+    width: 100%;
+}
+
+.main-pg-textbox {
+    letter-spacing: 1px;
+    text-wrap: pretty
+}
+
+.main-pg-textbox {
+    outline: #000 groove 5px
+}
+
+.main-pg-textbox {
+    background: url(/image/bg/write015.png) local #D52F63;
+    background-blend-mode: overlay;
+    border: 4px outset #000;
+    border-radius: 10px;
+    margin: 0 7px 0 0;
+    padding: 0 0 5px;
+    height: 480px;
+    grid-area: faq;
+    font-size: 14px;
+}
+
+.main-pg-textbox-content {
+    padding: 10px 15px 3px;
+}
+
+.the-actual-content {
+    z-index: 10;
+    grid-area: the-actual-content;
+    gap: 20px;
+    grid-template-columns: auto 250px;
+    grid-template-rows: 480px auto;
+    grid-template-areas:
+        "idk whatever"
+        "something buttons";
 }
