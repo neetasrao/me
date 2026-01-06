@@ -4,6 +4,14 @@
     src: url(https://dimden.dev/fonts/pixelfonts/Web437_CL_EagleIII_8x16.woff) format(woff)
 }
 
+/* COLOR PALLETE */
+
+/* --air-force-blue: #6889A4ff;
+--white-smoke: #F3F3F3ff;
+--yale-blue: #344962ff;
+--dusty-mauve: #AA6C83ff;
+--deep-space-blue: #1E2C3Fff; */
+
 a,
 abbr,
 acronym,
@@ -108,8 +116,6 @@ video {
 
 body {
     font-family: ms pgothic, "CL EagleIII 8x16", tahoma, sans-serif;
-    /* width: 100vw;
-    height: 100vh; */
     margin: 0;
     padding: 0;
     display: flex;
@@ -185,7 +191,7 @@ p {
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 41;
-    background: #000;
+    background: #344962ff;
     background-blend-mode: overlay;
     grid-area: nav;
     width: 200px;
@@ -194,7 +200,7 @@ p {
 }
 
 .nav-link {
-    text-shadow: 0 1px #000, 1px 0 #000, 0 -1px #000, -1px 0 #000, 1px -1px #000, -1px 1px #000, 1px 1px #000, -1px -1px #000;
+    text-shadow: 0 1px #1E2C3Fff, 1px 0 #1E2C3Fff, 0 -1px #1E2C3Fff, -1px 0 #1E2C3Fff, 1px -1px #1E2C3Fff, -1px 1px #1E2C3Fff, 1px 1px #1E2C3Fff, -1px -1px #1E2C3Fff;
     display: inline-block;
     animation: 3s linear infinite reverse rotate;
     border: 3px solid transparent;
@@ -204,7 +210,14 @@ p {
     transition: background-color 0.3s ease;
     font-size: 20px;
     overflow: hidden;
-    background: white;
+    background: linear-gradient(120deg,
+            #ffffff 0%,
+            #92B8BC 20%,
+            #BDEBE0 60%,
+            #ffffff 100%);
+    background-size: 200% auto;
+    background-position: 0% center;
+    animation: shine 4s linear infinite;
 }
 
 .nav hr {
@@ -228,7 +241,9 @@ p {
     display: inline-block;
     width: 150px;
     padding: 5px;
+    background: #1E2C3Fff;
 
+    /* todo: IMPROVE THIS */
     background: linear-gradient(120deg,
             #ffffff 0%,
             #92B8BC 20%,
@@ -240,7 +255,7 @@ p {
 
 .nav-button a:hover {
     filter: contrast(2);
-    animation: shine 4s linear infinite;
+    /* animation: shine 4s linear infinite; */
 }
 
 #portfolio-list {
@@ -325,7 +340,7 @@ p {
 
 .content {
     z-index: 40;
-    background: #000;
+    background: #344962ff;
     padding: 0 20px 20px;
     grid-template-columns: 650px 250px;
     grid-template-rows: 466px 43px 759px;
@@ -344,14 +359,13 @@ p {
     grid-template-areas:
         "nav next-nav"
         "nav footer";
-    outline: #003 groove 4px;
+    outline: #000 groove 4px;
 }
 
 .next-nav {
     z-index: 40;
     grid-area: next-nav;
-    background: #000;
-    border-image: url(/images/bg/pattern_580.gif) 0 20 repeat;
+    background: #344962ff;
     border-image-repeat: repeat;
     border-left: 20px solid;
     border-right: 20px solid;
@@ -359,7 +373,7 @@ p {
 }
 
 
-.before-content {
+.main-pg-header {
     z-index: 40;
     grid-template-rows: auto auto auto;
     display: grid;
@@ -376,13 +390,13 @@ p {
 }
 
 .main-pg-textbox {
-    outline: #000 groove 5px
+    outline: #344962ff groove 5px
 }
 
 .main-pg-textbox {
     background: url(/image/bg/write015.png) local #D52F63;
     background-blend-mode: overlay;
-    border: 4px outset #000;
+    border: 4px outset #344962ff;
     border-radius: 10px;
     margin: 0 7px 0 0;
     padding: 0 0 5px;
