@@ -1,16 +1,16 @@
+/* ==========================================================================
+   FONTS
+   ========================================================================== */
+
 @font-face {
     font-display: swap;
     font-family: "CL EagleIII 8x16";
-    src: url(https://dimden.dev/fonts/pixelfonts/Web437_CL_EagleIII_8x16.woff) format(woff)
+    src: url(https://dimden.dev/fonts/pixelfonts/Web437_CL_EagleIII_8x16.woff) format(woff);
 }
 
-/* COLOR PALLETE */
-
-/* --air-force-blue: #6889A4ff;
---white-smoke: #F3F3F3ff;
---yale-blue: #344962ff;
---dusty-mauve: #AA6C83ff;
---deep-space-blue: #1E2C3Fff; */
+/* ==========================================================================
+   CSS RESET
+   ========================================================================== */
 
 a,
 abbr,
@@ -97,42 +97,49 @@ video {
     padding: 0;
     border: 0;
     font: inherit;
-    vertical-align: baseline
+    vertical-align: baseline;
 }
 
-.nav-button a {
-    position: relative;
-}
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
 
-.nav-link {
-    box-sizing: border-box;
-}
+@keyframes shine {
+    from {
+        background-position: 0% center;
+    }
 
-@media screen and (max-height: 800px) {
-    .next-nav {
-        overflow-x: auto !important;
+    to {
+        background-position: 200% center;
     }
 }
 
-body {
-    font-family: ms pgothic, "CL EagleIII 8x16", tahoma, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    color: white;
-    max-width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    background: url(/images/bg/pattern_580.gif) fixed #000;
-    overflow-x: hidden;
+@keyframes flash {
+
+    0%,
+    100% {
+        color: red;
+    }
+
+    50% {
+        color: white;
+    }
 }
 
-.title {
-    display: block;
-    z-index: -1;
-    justify-content: center;
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+body {
+    font-family: ms pgothic, "CL EagleIII 8x16", tahoma, sans-serif;
+    background: url(/images/bg/pattern_580.gif) fixed #000;
+    overflow: hidden;
 }
 
 h1 {
@@ -146,50 +153,32 @@ h3 {
     font-weight: bold;
 }
 
-#portfolio-list a {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
 p {
     font-size: 1.5rem;
 }
 
-#bg {
-    position: fixed;
-    z-index: 0;
-    width: 100vw;
+/* ==========================================================================
+   LAYOUT - .page
+   ========================================================================== */
+
+.page {
+    margin: 0 auto;
+    width: fit-content;
     height: 100vh;
-    left: 0;
-    top: 0;
-    object-fit: cover;
-    pointer-events: none;
-    opacity: 1;
-    z-index: -1;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+        "nav next-nav"
+        "nav footer";
+    outline: #000 groove 4px;
 }
 
-.info-box {
-    z-index: 3;
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
-    display: none;
-    padding: 2rem;
-}
-
-.the-actual-content .nav {
-    position: relative
-}
-
-/* things I want to be aligned center */
-.nav,
-.main-pg-textbox {
-    text-align: center;
-}
+/* ==========================================================================
+   NAVIGATION - .nav
+   ========================================================================== */
 
 .nav {
-    overflow-y: auto;
-    overflow-x: hidden;
+    position: relative;
     z-index: 41;
     background: #344962ff;
     background-blend-mode: overlay;
@@ -197,10 +186,23 @@ p {
     width: 200px;
     color: #fff;
     font-size: 12px;
+    text-align: center;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
+.nav hr {
+    border-top: 1px dotted;
+    border-bottom: 0;
+}
+
+/* .nav-link */
+
 .nav-link {
-    text-shadow: 0 1px #1E2C3Fff, 1px 0 #1E2C3Fff, 0 -1px #1E2C3Fff, -1px 0 #1E2C3Fff, 1px -1px #1E2C3Fff, -1px 1px #1E2C3Fff, 1px 1px #1E2C3Fff, -1px -1px #1E2C3Fff;
+    box-sizing: border-box;
+    text-shadow: 0 1px #1E2C3Fff, 1px 0 #1E2C3Fff, 0 -1px #1E2C3Fff,
+        -1px 0 #1E2C3Fff, 1px -1px #1E2C3Fff, -1px 1px #1E2C3Fff,
+        1px 1px #1E2C3Fff, -1px -1px #1E2C3Fff;
     display: inline-block;
     animation: 3s linear infinite reverse rotate;
     border: 3px solid transparent;
@@ -220,30 +222,15 @@ p {
     animation: shine 4s linear infinite;
 }
 
-.nav hr {
-    border-top: 1px dotted;
-    border-bottom: 0
-}
-
-@keyframes shine {
-    from {
-        background-position: 0% center;
-    }
-
-    to {
-        background-position: 200% center;
-    }
-}
+/* .nav-button */
 
 .nav-button a {
+    position: relative;
     color: #D52F63;
     text-decoration: none;
     display: inline-block;
     width: 150px;
     padding: 5px;
-    background: #1E2C3Fff;
-
-    /* todo: IMPROVE THIS */
     background: linear-gradient(120deg,
             #ffffff 0%,
             #92B8BC 20%,
@@ -255,8 +242,72 @@ p {
 
 .nav-button a:hover {
     filter: contrast(2);
-    /* animation: shine 4s linear infinite; */
 }
+
+/* ==========================================================================
+   NEXT-NAV
+   ========================================================================== */
+
+.next-nav {
+    z-index: 40;
+    grid-area: next-nav;
+    height: 100vh;
+    background: #344962ff;
+    border-image-repeat: repeat;
+    border-left: 20px solid;
+    border-right: 20px solid;
+    overflow: auto;
+}
+
+/* .main-pg-header */
+
+.main-pg-header {
+    z-index: 40;
+}
+
+/* ==========================================================================
+   CONTENT
+   ========================================================================== */
+
+.content {
+    z-index: 40;
+    background: #344962ff;
+    padding: 0 20px 20px;
+    display: grid;
+    grid-template-columns: 650px 250px;
+    grid-template-rows: 466px 43px 759px;
+    grid-template-areas:
+        "main-pg-header main-pg-header"
+        "main-pg-textbox sidebar";
+    height: fit-content;
+    width: 940px;
+}
+
+/* .main-pg-textbox */
+
+.main-pg-textbox {
+    background: url(/image/bg/write015.png) local #D52F63;
+    background-blend-mode: overlay;
+    border: 4px outset #344962ff;
+    border-radius: 10px;
+    outline: #344962ff groove 5px;
+    margin: 0 7px 0 0;
+    padding: 0 0 5px;
+    height: 480px;
+    grid-area: main-pg-textbox;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-wrap: pretty;
+}
+
+.main-pg-textbox-content {
+    padding: 10px 15px 3px;
+}
+
+/* ==========================================================================
+   PORTFOLIO (Commented out in HTML)
+   ========================================================================== */
 
 #portfolio-list {
     position: sticky;
@@ -266,6 +317,8 @@ p {
 }
 
 #portfolio-list a {
+    font-size: 1.5rem;
+    font-weight: bold;
     color: gray;
 }
 
@@ -284,6 +337,31 @@ p {
     padding: 1em;
 }
 
+#portfolio-textbox div {
+    display: none;
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+.the-actual-content {
+    z-index: 10;
+    grid-area: the-actual-content;
+    gap: 20px;
+    grid-template-columns: auto 250px;
+    grid-template-rows: 480px auto;
+    grid-template-areas:
+        "idk whatever"
+        "something buttons";
+}
+
+.title {
+    display: block;
+    z-index: -1;
+    justify-content: center;
+}
+
 .textbox {
     position: fixed;
     width: 40%;
@@ -294,8 +372,13 @@ p {
     padding: 1em;
 }
 
-#portfolio-textbox div {
+.info-box {
+    z-index: 3;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
     display: none;
+    padding: 2rem;
 }
 
 .flashing-text {
@@ -307,115 +390,24 @@ p {
     line-height: 1.5;
 }
 
-@keyframes flash {
-
-    0%,
-    100% {
-        color: red;
-    }
-
-    50% {
-        color: white;
-    }
-}
-
-@keyframes rotate {
-    to {
-        --angle: 360deg
-    }
-}
-
-.content,
-.extras,
-.my-links,
-.page,
-.something {
-    display: grid
-}
-
-.next-nav,
-.page {
+#bg {
+    position: fixed;
+    z-index: -1;
+    width: 100vw;
     height: 100vh;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    pointer-events: none;
+    opacity: 1;
 }
 
-.content {
-    z-index: 40;
-    background: #344962ff;
-    padding: 0 20px 20px;
-    grid-template-columns: 650px 250px;
-    grid-template-rows: 466px 43px 759px;
-    grid-template-areas:
-        "main sidebar"
-        "below-desc sidebar"
-        "extras extras";
-    height: fit-content;
-    width: 940px;
-}
+/* ==========================================================================
+   MEDIA QUERIES
+   ========================================================================== */
 
-.page {
-    margin: 0 auto;
-    width: fit-content;
-    grid-template-columns: auto auto;
-    grid-template-areas:
-        "nav next-nav"
-        "nav footer";
-    outline: #000 groove 4px;
-}
-
-.next-nav {
-    z-index: 40;
-    grid-area: next-nav;
-    background: #344962ff;
-    border-image-repeat: repeat;
-    border-left: 20px solid;
-    border-right: 20px solid;
-    overflow: auto;
-}
-
-
-.main-pg-header {
-    z-index: 40;
-    grid-template-rows: auto auto auto;
-    display: grid;
-    grid-template-areas:
-        "header"
-        "header-title"
-        "content";
-    width: 100%;
-}
-
-.main-pg-textbox {
-    letter-spacing: 1px;
-    text-wrap: pretty
-}
-
-.main-pg-textbox {
-    outline: #344962ff groove 5px
-}
-
-.main-pg-textbox {
-    background: url(/image/bg/write015.png) local #D52F63;
-    background-blend-mode: overlay;
-    border: 4px outset #344962ff;
-    border-radius: 10px;
-    margin: 0 7px 0 0;
-    padding: 0 0 5px;
-    height: 480px;
-    grid-area: faq;
-    font-size: 14px;
-}
-
-.main-pg-textbox-content {
-    padding: 10px 15px 3px;
-}
-
-.the-actual-content {
-    z-index: 10;
-    grid-area: the-actual-content;
-    gap: 20px;
-    grid-template-columns: auto 250px;
-    grid-template-rows: 480px auto;
-    grid-template-areas:
-        "idk whatever"
-        "something buttons";
+@media screen and (max-height: 800px) {
+    .next-nav {
+        overflow-x: auto !important;
+    }
 }
