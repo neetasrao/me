@@ -204,6 +204,7 @@ p {
     transition: background-color 0.3s ease;
     font-size: 20px;
     overflow: hidden;
+    background: white;
 }
 
 .nav hr {
@@ -211,21 +212,35 @@ p {
     border-bottom: 0
 }
 
+@keyframes shine {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: 200% center;
+    }
+}
+
 .nav-button a {
     color: #D52F63;
-    background: linear-gradient(.25turn, #FFFFFFFF, #FCEFEFFF, #B0DCFFFF) #000453;
-    background-repeat: no-repeat;
     text-decoration: none;
-    border: 3px groove white;
     display: inline-block;
     width: 150px;
     padding: 5px;
-    margin: 0;
-    border: none;
+
+    background: linear-gradient(120deg,
+            #ffffff 0%,
+            #92B8BC 20%,
+            #BDEBE0 60%,
+            #ffffff 100%);
+    background-size: 200% auto;
+    background-position: 0% center;
 }
 
 .nav-button a:hover {
     filter: contrast(2);
+    animation: shine 4s linear infinite;
 }
 
 #portfolio-list {
