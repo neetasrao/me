@@ -100,6 +100,14 @@ video {
     vertical-align: baseline;
 }
 
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0
+}
+
 /* ==========================================================================
    ANIMATIONS
    ========================================================================== */
@@ -138,8 +146,9 @@ video {
 
 body {
     font-family: ms pgothic, "CL EagleIII 8x16", tahoma, sans-serif;
-    background: url(/images/bg/pattern_580.gif) fixed #000;
-    overflow: hidden;
+    background: url(/images/bg/color3_103_12-dither.png) fixed #000;
+    /* TODO: improve this */
+    padding: 2.5vh 0 2.5vh;
 }
 
 h1 {
@@ -164,13 +173,13 @@ p {
 .page {
     margin: 0 auto;
     width: fit-content;
-    height: 100vh;
+    height: 95vh;
     display: grid;
     grid-template-columns: auto auto;
     grid-template-areas:
         "nav next-nav"
         "nav footer";
-    outline: #000 groove 4px;
+    outline: #F3F3F3ff inset 4px;
 }
 
 /* ==========================================================================
@@ -251,17 +260,22 @@ p {
 .next-nav {
     z-index: 40;
     grid-area: next-nav;
-    height: 100vh;
+    /* height: 100vh; */
     background: #344962ff;
+    border-image: url(/images/mop-border-vertical.png) 0 50 repeat;
     border-image-repeat: repeat;
     border-left: 20px solid;
     border-right: 20px solid;
     overflow: auto;
+    box-sizing: border-box;
 }
 
 /* .main-pg-header */
 
 .main-pg-header {
+    background: url(/images/mop-border-horizontal-resize.png) top center repeat-x, url(/images/bg/secret-garden-header-dither.png) center / cover no-repeat, center / cover no-repeat;
+    grid-area: header;
+    height: 300px;
     z-index: 40;
 }
 
@@ -277,7 +291,6 @@ p {
     grid-template-columns: 650px 250px;
     grid-template-rows: 466px 43px 759px;
     grid-template-areas:
-        "main-pg-header main-pg-header"
         "main-pg-textbox sidebar";
     height: fit-content;
     width: 940px;
@@ -286,7 +299,8 @@ p {
 /* .main-pg-textbox */
 
 .main-pg-textbox {
-    background: url(/image/bg/write015.png) local #D52F63;
+    background: url(/images/bg/vaporwave-butterfly-dither.png) no-repeat local #C383D8;
+    background-size: cover;
     background-blend-mode: overlay;
     border: 4px outset #344962ff;
     border-radius: 10px;
@@ -299,6 +313,7 @@ p {
     text-align: center;
     letter-spacing: 1px;
     text-wrap: pretty;
+    gap: 20px;
 }
 
 .main-pg-textbox-content {
