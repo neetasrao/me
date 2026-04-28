@@ -1,0 +1,97 @@
+body {
+    background: url(/images/bg/dithered-image.png) center top #a9a9a9;
+    background-blend-mode: difference;
+    font-size: 24px;
+    letter-spacing: 2px;
+    height: 1px
+}
+
+.content {
+    outline: silver dashed 2px;
+    border-radius: 20px;
+    /* display: grid;
+    grid-template-columns: 484px 484px; */
+    /* grid-template-areas: "page nav"; */
+    justify-content: center;
+    width: 800px;
+    margin: 0 auto;
+    position: relative;
+    background: #a9a9a9;
+    overflow-y: auto;
+}
+
+.datetime {
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.post {
+    margin: 10px;
+}
+
+.post-text {
+    font-size: 14px;
+}
+
+
+
+.home-link {
+    display: inline-block;
+    margin: 5px 10px 20px;
+    color: #427147;
+    font-family: "DOS/V re. ANK24", simsun, "simsun web", ms gothic, "ms gothic web";
+    filter: invert(0) drop-shadow(0 1px #000) drop-shadow(0 -1px #000) drop-shadow(-1px 0 #000) drop-shadow(1px 0 #000) drop-shadow(0 1px #fff0) drop-shadow(0 -1px #fff0) drop-shadow(-1px 0 #fff0) drop-shadow(1px 0 #fff0);
+}
+
+.home-link:hover {
+    filter: invert(1) drop-shadow(0 1px #000) drop-shadow(0 -1px #000) drop-shadow(-1px 0 #000) drop-shadow(1px 0 #000) drop-shadow(0 1px #fff) drop-shadow(0 -1px #fff) drop-shadow(-1px 0 #fff) drop-shadow(1px 0 #fff)
+}
+
+a {
+    transition: .2s ease-in-out;
+    color: #0ff;
+}
+
+a:hover {
+    letter-spacing: 5px;
+}
+
+.pag-btn {
+    background-color: transparent;
+    color: #427147;
+    filter: invert(0) drop-shadow(0 1px #000) drop-shadow(0 -1px #000) drop-shadow(-1px 0 #000) drop-shadow(1px 0 #000) drop-shadow(0 1px #fff0) drop-shadow(0 -1px #fff0) drop-shadow(-1px 0 #fff0) drop-shadow(1px 0 #fff0);
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    height: 100%;
+    font-family: CherryBombOne;
+    font-size: 16px;
+}
+
+.footer {
+    text-align: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 290px 290px;
+    align-items: start;
+    margin: 1em auto 0;
+    padding: 10px;
+    background: #56564A;
+    /* grid-template-columns: "journal-button journal-button"; */
+}
+
+.journal-button {
+    background: url("/images/lace_header.png");
+    background-size: cover;
+    background-position: top;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
+button:not(.disabled):hover {
+    filter: invert(1) drop-shadow(0 1px #000) drop-shadow(0 -1px #000) drop-shadow(-1px 0 #000) drop-shadow(1px 0 #000) drop-shadow(0 1px #fff) drop-shadow(0 -1px #fff) drop-shadow(-1px 0 #fff) drop-shadow(1px 0 #fff);
+    letter-spacing: 3px;
+    transition: .2s ease-in-out;
+}
