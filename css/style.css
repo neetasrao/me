@@ -1,428 +1,443 @@
-/* ==========================================================================
-   FONTS
-   ========================================================================== */
+@font-face {
+    font-family: CherryBombOne;
+    src: url("../CherryBombOne-Regular.ttf");
+}
 
 @font-face {
-    font-display: swap;
-    font-family: "CL EagleIII 8x16";
-    src: url(https://dimden.dev/fonts/pixelfonts/Web437_CL_EagleIII_8x16.woff) format(woff);
+    font-family: "Grenze Gotisch";
+    src: url("../GrenzeGotisch-VariableFont_wght.ttf");
 }
 
-/* ==========================================================================
-   CSS RESET
-   ========================================================================== */
+.lace-border {
+    --lace-width: 60px;
+    border: var(--lace-width) solid transparent;
+    border-image-source: url(/images/lace.png);
+    border-image-slice: 84;
+    border-image-repeat: round;
+    border-image-outset: 1;
+    background: rgba(0, 0, 0, 0.9);
+    margin: 130px;
 
-a,
-abbr,
-acronym,
-address,
-applet,
-article,
-aside,
-audio,
-b,
-big,
-blockquote,
-body,
-canvas,
-caption,
-center,
-cite,
-code,
-dd,
-del,
-details,
-dfn,
-div,
-dl,
-dt,
-em,
-embed,
-fieldset,
-figcaption,
-figure,
-footer,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header,
-hgroup,
-html,
-i,
-iframe,
-img,
-ins,
-kbd,
-label,
-legend,
-li,
-mark,
-menu,
-nav,
-object,
-ol,
-output,
-p,
-pre,
-q,
-ruby,
-s,
-samp,
-section,
-small,
-span,
-strike,
-strong,
-sub,
-summary,
-sup,
-table,
-tbody,
-td,
-tfoot,
-th,
-thead,
-time,
-tr,
-tt,
-u,
-ul,
-var,
-video {
+}
+
+* {
     margin: 0;
     padding: 0;
-    border: 0;
-    font: inherit;
-    vertical-align: baseline;
-}
-
-*,
-*:after,
-*:before {
     box-sizing: border-box;
-    padding: 0;
-    margin: 0
 }
-
-/* ==========================================================================
-   ANIMATIONS
-   ========================================================================== */
-
-@keyframes shine {
-    from {
-        background-position: 0% center;
-    }
-
-    to {
-        background-position: 200% center;
-    }
-}
-
-@keyframes flash {
-
-    0%,
-    100% {
-        color: red;
-    }
-
-    50% {
-        color: white;
-    }
-}
-
-@keyframes rotate {
-    to {
-        --angle: 360deg;
-    }
-}
-
-/* ==========================================================================
-   BASE STYLES
-   ========================================================================== */
 
 body {
-    font-family: ms pgothic, "CL EagleIII 8x16", tahoma, sans-serif;
-    background: url(/images/bg/color3_103_12-dither.png) fixed #000;
-    /* TODO: improve this */
-    padding: 2.5vh 0 2.5vh;
+    font-family: 'Courier New', monospace;
+    background: url(/images/bg/purple_black_stripes_large.png);
+    color: #333;
+    min-height: 100vh;
 }
-
-h1 {
-    margin-top: 10px;
-    font-size: 3rem;
-    font-weight: bold;
-}
-
-h3 {
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-p {
-    font-size: 1.5rem;
-}
-
-/* ==========================================================================
-   LAYOUT - .page
-   ========================================================================== */
 
 .page {
     margin: 0 auto;
     width: fit-content;
-    height: 95vh;
+    height: 100vh;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 400px auto;
     grid-template-areas:
-        "nav next-nav"
-        "nav footer";
-    outline: #F3F3F3ff inset 4px;
+        "sidebar next-nav"
+        "sidebar footer";
+    padding-top: 70px;
+    column-gap: 100px;
 }
 
-/* ==========================================================================
-   NAVIGATION - .nav
-   ========================================================================== */
-
-.nav {
-    position: relative;
-    z-index: 41;
-    background: #344962ff;
-    background-blend-mode: overlay;
-    grid-area: nav;
-    width: 200px;
-    color: #fff;
-    font-size: 12px;
-    text-align: center;
+.sidebar {
+    grid-area: sidebar;
     overflow-y: auto;
     overflow-x: hidden;
-}
-
-.nav hr {
-    border-top: 1px dotted;
-    border-bottom: 0;
-}
-
-/* .nav-link */
-
-.nav-link {
-    box-sizing: border-box;
-    text-shadow: 0 1px #1E2C3Fff, 1px 0 #1E2C3Fff, 0 -1px #1E2C3Fff,
-        -1px 0 #1E2C3Fff, 1px -1px #1E2C3Fff, -1px 1px #1E2C3Fff,
-        1px 1px #1E2C3Fff, -1px -1px #1E2C3Fff;
-    display: inline-block;
-    animation: 3s linear infinite reverse rotate;
-    border: 3px solid transparent;
-    outline: black groove 5px;
-    width: fit-content;
-    margin: 15px 0 0;
-    transition: background-color 0.3s ease;
-    font-size: 20px;
-    overflow: hidden;
-    background: linear-gradient(120deg,
-            #ffffff 0%,
-            #92B8BC 20%,
-            #BDEBE0 60%,
-            #ffffff 100%);
-    background-size: 200% auto;
-    background-position: 0% center;
-    animation: shine 4s linear infinite;
-}
-
-/* .nav-button */
-
-.nav-button a {
     position: relative;
-    color: #D52F63;
-    text-decoration: none;
-    display: inline-block;
-    width: 150px;
-    padding: 5px;
-    background: linear-gradient(120deg,
-            #ffffff 0%,
-            #92B8BC 20%,
-            #BDEBE0 60%,
-            #ffffff 100%);
-    background-size: 200% auto;
-    background-position: 0% center;
-}
-
-.nav-button a:hover {
-    filter: contrast(2);
-}
-
-/* ==========================================================================
-   NEXT-NAV
-   ========================================================================== */
-
-.next-nav {
-    z-index: 40;
-    grid-area: next-nav;
-    /* height: 100vh; */
-    background: #344962ff;
-    border-image: url(/images/mop-border-vertical.png) 0 50 repeat;
-    border-image-repeat: repeat;
-    border-left: 20px solid;
-    border-right: 20px solid;
-    overflow: auto;
-    box-sizing: border-box;
-}
-
-/* .main-pg-header */
-
-.main-pg-header {
-    background: url(/images/mop-border-horizontal-resize.png) top center repeat-x, url(/images/bg/secret-garden-header-dither.png) center / cover no-repeat, center / cover no-repeat;
-    grid-area: header;
-    height: 300px;
-    z-index: 40;
-}
-
-/* ==========================================================================
-   CONTENT
-   ========================================================================== */
-
-.content {
-    z-index: 40;
-    background: #344962ff;
-    padding: 0 20px 20px;
-    display: grid;
-    grid-template-columns: 650px 250px;
-    grid-template-rows: 466px 43px 759px;
-    grid-template-areas:
-        "main-pg-textbox sidebar";
-    height: fit-content;
-    width: 940px;
-}
-
-/* .main-pg-textbox */
-
-.main-pg-textbox {
-    background: url(/images/bg/vaporwave-butterfly-dither.png) no-repeat local #C383D8;
-    background-size: cover;
-    background-blend-mode: overlay;
-    border: 4px outset #344962ff;
-    border-radius: 10px;
-    outline: #344962ff groove 5px;
-    margin: 0 7px 0 0;
-    padding: 0 0 5px;
-    height: 480px;
-    grid-area: main-pg-textbox;
-    font-size: 14px;
-    text-align: center;
-    letter-spacing: 1px;
-    text-wrap: pretty;
-    gap: 20px;
-}
-
-.main-pg-textbox-content {
-    padding: 10px 15px 3px;
-}
-
-/* ==========================================================================
-   PORTFOLIO (Commented out in HTML)
-   ========================================================================== */
-
-#portfolio-list {
-    position: sticky;
-    top: 0;
-    left: 1%;
-    overflow: scroll;
-}
-
-#portfolio-list a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: gray;
-}
-
-#portfolio-list a:hover {
-    color: white;
-    cursor: pointer;
-}
-
-#portfolio-textbox {
-    position: fixed;
-    width: 40%;
-    right: 14%;
-    bottom: 10%;
-    border-style: solid;
-    border-width: 3px;
-    padding: 1em;
-}
-
-#portfolio-textbox div {
-    display: none;
-}
-
-/* ==========================================================================
-   UTILITY CLASSES
-   ========================================================================== */
-
-.the-actual-content {
-    z-index: 10;
-    grid-area: the-actual-content;
-    gap: 20px;
-    grid-template-columns: auto 250px;
-    grid-template-rows: 480px auto;
-    grid-template-areas:
-        "idk whatever"
-        "something buttons";
-}
-
-.title {
-    display: block;
-    z-index: -1;
-    justify-content: center;
-}
-
-.textbox {
-    position: fixed;
-    width: 40%;
-    right: 14%;
-    bottom: 10%;
-    border-style: solid;
-    border-width: 3px;
-    padding: 1em;
-}
-
-.info-box {
-    z-index: 3;
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
-    display: none;
-    padding: 2rem;
-}
-
-.flashing-text {
-    font-size: 50px;
-    font-weight: bold;
-    text-align: center;
-    animation: flash 1s steps(1) infinite;
-    margin: 20px 0;
-    line-height: 1.5;
-}
-
-#bg {
-    position: fixed;
-    z-index: -1;
-    width: 100vw;
+    z-index: 41;
     height: 100vh;
+}
+
+.morning-star {
+    background: url(/images/morning_star.png) 0 0 / contain no-repeat #ccc;
+    height: 200px;
+    margin: 0 0;
+}
+
+.container {
+    grid-area: next-nav;
+    overflow: auto;
+    height: 100%;
+    max-width: unset;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.container p {
+    color: #fff;
+}
+
+.p::first-letter {
+    font-family: "Grenze Gotisch";
+    font-size: 35px;
+    vertical-align: baseline;
+    line-height: 20px;
+}
+
+.header {
+    text-align: left;
+    margin-bottom: 60px;
+}
+
+.header h1 {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.track-list {
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.track-list div {
+    margin: 5px 0;
+}
+
+/* Musical Staff Section */
+.staff-container {
+    margin: 80px 0;
+    position: relative;
+    height: 200px;
+    background: transparent;
+}
+
+.staff {
+    position: relative;
+    height: 120px;
+    margin: 40px 0;
+}
+
+.staff-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #e8e8e8;
     left: 0;
+}
+
+.staff-line:nth-child(1) {
     top: 0;
-    object-fit: cover;
+}
+
+.staff-line:nth-child(2) {
+    top: 30px;
+}
+
+.staff-line:nth-child(3) {
+    top: 60px;
+}
+
+.staff-line:nth-child(4) {
+    top: 90px;
+}
+
+.staff-line:nth-child(5) {
+    top: 120px;
+}
+
+.clef {
+    position: absolute;
+    left: 20px;
+    top: -25px;
+    font-size: 200px;
+    z-index: 10;
+    color: #e8e8e8;
+}
+
+.music-note-link {
+    position: absolute;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 100px;
+    color: #e8e8e8;
+}
+
+.music-note {
+    width: 40px;
+    height: 80px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.music-note-link:hover .music-note {
+    transform: translateY(-10px);
+    color: #363636;
+}
+
+.music-note-label {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff7ea;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
     pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.music-note-link:hover .music-note-label {
     opacity: 1;
 }
 
-/* ==========================================================================
-   MEDIA QUERIES
-   ========================================================================== */
+/* Music note positions on the staff */
+.music-note-link:nth-of-type(1) {
+    left: 120px;
+    top: 45px;
+}
 
-@media screen and (max-height: 800px) {
-    .next-nav {
-        overflow-x: auto !important;
+.music-note-link:nth-of-type(2) {
+    left: 180px;
+    top: 20px;
+}
+
+.music-note-link:nth-of-type(3) {
+    left: 260px;
+    top: 50px;
+}
+
+.music-note-link:nth-of-type(4) {
+    left: 340px;
+    top: 35px;
+}
+
+.music-note-link:nth-of-type(5) {
+    left: 420px;
+    top: 0px;
+}
+
+.music-note-link:nth-of-type(6) {
+    left: 500px;
+    top: 45px;
+}
+
+.music-note-link:nth-of-type(7) {
+    left: 600px;
+    top: 15px;
+}
+
+.music-note-link:nth-of-type(8) {
+    left: 680px;
+    top: 35px;
+}
+
+.music-note-link:nth-of-type(9) {
+    left: 760px;
+    top: 25px;
+}
+
+.music-note-link:nth-of-type(10) {
+    left: 840px;
+    top: 40px;
+}
+
+.music-note-link:nth-of-type(11) {
+    left: 920px;
+    top: 20px;
+}
+
+.side-section {
+    margin: 60px 0;
+}
+
+.side-section h2 {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.side-section .track-list {
+    font-size: 12px;
+}
+
+.footer {
+    margin-top: 100px;
+    padding-top: 40px;
+    border-top: 1px solid #999;
+    font-size: 9px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.footer-logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.front-page-image {
+    width: 200px !important;
+    height: 200px !important;
+    position: absolute;
+}
+
+.front-page-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.img-1 {
+    top: 20px;
+    right: 60px;
+}
+
+.img-2 {
+    top: 400px;
+    left: 20px;
+}
+
+.img-3 {
+    bottom: 150px;
+    right: 40px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
     }
+
+    .staff-container {
+        overflow-x: auto;
+    }
+
+    .staff {
+        min-width: 1000px;
+    }
+
+    .image-placeholder {
+        display: none;
+    }
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal.active {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: ease;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: #666;
+}
+
+.faller {
+    position: absolute;
+    width: 175px;
+    height: 175px;
+    animation: fall linear infinite;
+    z-index: -1;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(130vh);
+    }
+}
+
+.star {
+    position: absolute;
+    top: -20px;
+    color: black;
+    animation: fall linear infinite;
+    z-index: -1;
+    size: 50px;
+}
+
+.star::before {
+    content: "★";
+    text-shadow: 0 0 5px black, 0 0 20px black, 0 0 50px black;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .star {
+        font-size: 8px;
+    }
+}
+
+#loading {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    opacity: 1;
+    background: #fcf;
+    z-index: 9999999999999999999999999999;
+}
+
+a {
+    text-decoration: none;
 }
